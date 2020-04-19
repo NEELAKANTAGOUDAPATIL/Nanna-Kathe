@@ -1,0 +1,29 @@
+{% extends "members/member_base.html" %}
+{% load humanize %}
+
+{% block post_content %}
+<div class="col-md-8">
+  {% if request.user.is_authenticated %}
+    <ul class="list-unstyled">
+      {% if member_list %}
+
+        {% for member in member_list %}
+          {% if member.user.username == user.get_username %}
+            <div class="post">
+              <h1>
+                <a href="{% url 'members:single' username=member.user.username pk=member.pk %}">{{ member.name }}</a>
+              </h1>
+              <div class="date">
+                <p>Start Date: {{ member.start_date|date:"D M Y" }}</p>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <h2>No members here yet!</h2>
+
+      {% endif %}
+    </ul>
+  {% endif %}
+</div>
+{% endblock %}

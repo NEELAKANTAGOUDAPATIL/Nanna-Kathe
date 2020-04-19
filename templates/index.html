@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center">
+  <h1>Welcome to Nanna Kathe!</h1>
+  <h2>The best platform to maintain your kathe and keep tracking it,</h2>
+  <h2>Any where Any time Any center!</h2>
+  {% if not user.is_authenticated %}
+    <h2>Login or Sign-up for free to get started!</h2>
+  {% endif %}
+</div>
+
+
+{% endblock %}
